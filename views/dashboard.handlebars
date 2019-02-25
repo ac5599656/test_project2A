@@ -1,0 +1,48 @@
+<div id="user-header-container">
+
+    {{!-- Name of user shows up --}}
+    <div id='personal-info-container'>
+        <div id="info-tightener">
+            <span id="firstNameDisplay">{{firstName}}</span>
+
+            <span id="lastNameDisplay">{{lastName}}</span>
+        </div>
+
+        <span id="locationDisplay">{{location}}</span>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="commentarea">
+
+    {{!-- Text area to leave comments --}}
+    <form action="/api/posts" class="create-comment-textarea">
+        <div class="form-group">
+            <label for="post">Post:</label>
+            <textarea class="form-control" rows="5" id="post-comment"></textarea>
+            {{!-- </div> --}}
+
+        {{!-- Text area to leave comments --}}
+        {{!-- </div> --}}
+{{!-- </form> --}}
+{{!-- Can choose the beer they are drinking to post that from the API --}}
+{{!-- <div class="favbeergroup">
+    <form class="create-fav-beer"> --}}
+        {{!-- <button type="button" class="btn btn-outline-dark btn-lg" id-"favbeerbutton">Add Favorite Beer</button>
+        --}}
+        {{!-- <div class="form-group">
+            <label for="favbeer"></label> --}}
+            <input type="favbeer" class="form-control" id="favbeerinput">
+            <input type="favbar" class="form-control" id="favbarinput">
+            <button type="button" class="btn btn-outline-dark btn-lg mt-3" id="commentbutton">Post</button>
+    </form>
+</div>
+</div>
+{{!-- Comments get posted here --}}
+<div class="postContainer">
+    <h2>Comments</h2>
+</div>
+</div>
+
+</div>

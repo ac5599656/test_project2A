@@ -1,0 +1,58 @@
+{{> bg-block}}
+<div class="row">
+
+    <div class="col-md-7 text-light">
+
+    </div>
+    <div class="col-md-5">
+
+
+
+        <div class="card-overlay">
+
+            <div class="container" id="mainlogin">
+                <form name="myForm" action="/auth/login" onsubmit="return validateForm()" method="post">
+
+                    <h3>Log In </h3>
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <label for="email">Email:</label>
+                            <input id="email" type="email" class="validate" name="email" required>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <label for="password">Password:</label>
+                            <input id="password" type="password" class="validate" name="password" required>
+
+                        </div>
+                    </div>
+                    <div class="row">
+
+
+                        <button class="btn submit" type="submit" value="Log in">Log in </button>
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
