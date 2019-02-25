@@ -20,7 +20,7 @@
     <form action="/api/posts" class="create-comment-textarea">
         <div class="form-group">
             <label for="post">Post:</label>
-            <textarea class="form-control" rows="5" id="post-comment"></textarea>
+            <textarea placeholder="Comment Away About Your Beer Experience!" class="form-control" rows="5" id="post-comment"></textarea>
             {{!-- </div> --}}
 
         {{!-- Text area to leave comments --}}
@@ -33,8 +33,8 @@
         --}}
         {{!-- <div class="form-group">
             <label for="favbeer"></label> --}}
-            <input type="favbeer" class="form-control" id="favbeerinput">
-            <input type="favbar" class="form-control" id="favbarinput">
+            <input type="favbeer" placeholder="Favorite Beer:" class="form-control" id="favbeerinput">
+            <input type="favbar" placeholder="Favorite Bar:" class="form-control" id="favbarinput">
             <button type="button" class="btn btn-outline-dark btn-lg mt-3" id="commentbutton">Post</button>
     </form>
 </div>

@@ -21,6 +21,7 @@
     "express-handlebars": "^3.0.0",
     "express-messages": "^1.0.1",
     "express-session": "^1.15.6",
+    "mysql": "^2.16.0",
     "mysql2": "^1.6.4",
     "nodemon": "^1.18.10",
     "passport": "^0.4.0",
