@@ -10,7 +10,7 @@ about their experience, the posts show their favorite bar linked to a map and th
 
 The App also identifies the user and location.
 
-To see a live demo. Please click [here](https://limitless-basin-10585.herokuapp.com/).
+To see a live demo, Please click [here](https://limitless-basin-10585.herokuapp.com/).
 
 ## Authors
 
