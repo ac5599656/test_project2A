@@ -57,7 +57,7 @@ $(document).ready(function () {
     console.log(post);
     console.log(post.favBar);
     var beer = $("<h6 class='beer'>")
-    beer.text(post.favBeer);
+    beer.text("Drinking:" + post.favBeer);
     var replaceFavBar = post.favBar.split(" ").join("+");
     var bar = $(`<a href=https://www.google.com/maps/search/?api=1&query=${replaceFavBar}>${post.favBar}</a>`);
     // bar.text("bar:" + post.favBar);
@@ -74,15 +74,24 @@ $(document).ready(function () {
     //editBtn.text("Edit");
     //editBtn.addClass("edit btn btn-info");
     var newPostTitle = $("<h2>");
-    var newPostDate = $("<small>");
+    var newPostDate = $("<h5>");
     var newPostAuthor = $("<h5>");
     newPostAuthor.text(
       "Written by: " + post.User.firstname + " " + post.User.lastname
     );
     newPostAuthor.css({
       float: "right",
-      color: "blue",
-      "margin-top": "-10px"
+      color: "orange",
+      "margin-top": "40px"
+
+
+    });
+
+    newPostDate.css({
+      float: "left",
+      color: "black",
+      "margin-top": "50px",
+      "font-size": "10px"
     });
 
     var newPostCardBody = $("<div>");
@@ -90,9 +99,10 @@ $(document).ready(function () {
     var newPostBody = $(`<a href=https://www.google.com/maps/search/?api=1&query=${replaceFavBar}>${post.favBar}</a>`);
     var newBeer = $("<h6 class='beer'>")
     //newPostTitle.text("");
+    var newPost = $("<p class = 'postBody'>")
+    newPost.text(post.body);
     newPostBody.text(post.body);
     newBeer.text(post.body);
-    newPostDate.text(formattedDate);
     newPostTitle.append(newPostDate);
     if (post.UserId === post.currentUser) {
       newPostCardHeading.append(deleteBtn);
@@ -101,7 +111,8 @@ $(document).ready(function () {
     newPostCardHeading.append(beer);
     newPostCardHeading.append(newPostTitle);
     newPostCardHeading.append(newPostAuthor);
-    newPostCardBody.append(newPostBody);
+    newPostDate.text(formattedDate);
+    newPostCardBody.append(newPost);
     newPostCard.append(newPostCardHeading);
     newPostCard.append(newPostCardBody);
     newPostCard.data("post", post);

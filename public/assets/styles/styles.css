@@ -9,10 +9,6 @@ body {
 body {
   background-color: rgb(221, 219, 219);
 
-  /* background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative; */
 }
 
 .list-group-item {
@@ -44,7 +40,6 @@ h2 {
 
 #bgimg {
   position: absolute;
-  /* background: url("../images/peopledrinking.jpg"); */
   background-size: cover;
   background-repeat: no-repeat;
   height: 600px;
@@ -112,9 +107,14 @@ h2 {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  /* background-image: url("../images/beerlogo.png");
-  background-repeat:no-repeat;
-  background-position:left; */
+}
+
+#favbarinput {
+  width: 50%;
+}
+
+h3 {
+  color: rgb(248, 163, 52);
 }
 
 #user-header-container {
@@ -127,6 +127,12 @@ h2 {
   margin-left: 90%;
   margin-bottom: 0;
   display: none;
+}
+
+.beerbarrow {
+  flex-wrap: nowrap;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 #personal-info-container {
@@ -163,5 +169,23 @@ h2 {
 
 .beer {
   float: right;
-  width: 100px;
+
+}
+
+p {
+  text-align: center;
+  margin-top: 20%;
+  margin-bottom: 50%;
+  font-size: 50px;
+  font-family: monospace;
+  text-shadow: 1px 1px 2px #000000;
+}
+
+label[for="post"] {
+  font-size: 36px;
+}
+
+.postBody {
+  margin-bottom: 10%;
+  margin-top: 10%;
 }

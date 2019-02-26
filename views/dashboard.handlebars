@@ -11,38 +11,45 @@
         <span id="locationDisplay">{{location}}</span>
     </div>
 </div>
-</div>
-</div>
+
 
 <div class="commentarea">
+    <div class="row">
+        <div class="col-md-3">
 
-    {{!-- Text area to leave comments --}}
-    <form action="/api/posts" class="create-comment-textarea">
-        <div class="form-group">
-            <label for="post">Post:</label>
-            <textarea placeholder="Comment Away About Your Beer Experience!" class="form-control" rows="5" id="post-comment"></textarea>
-            {{!-- </div> --}}
+        </div>
+        <div class="col-md-6">
+            {{!-- Text area to leave comments --}}
+            <form action="/api/posts" class="create-comment-textarea">
+                <div class="form-group">
+                    <label for="post">Post:</label>
+                    <textarea placeholder="Comment Away About Your Beer Experience!" class="form-control" rows="5" id="post-comment"></textarea>
 
-        {{!-- Text area to leave comments --}}
-        {{!-- </div> --}}
-{{!-- </form> --}}
-{{!-- Can choose the beer they are drinking to post that from the API --}}
-{{!-- <div class="favbeergroup">
-    <form class="create-fav-beer"> --}}
-        {{!-- <button type="button" class="btn btn-outline-dark btn-lg" id-"favbeerbutton">Add Favorite Beer</button>
-        --}}
-        {{!-- <div class="form-group">
-            <label for="favbeer"></label> --}}
-            <input type="favbeer" placeholder="Favorite Beer:" class="form-control" id="favbeerinput">
-            <input type="favbar" placeholder="Favorite Bar:" class="form-control" id="favbarinput">
-            <button type="button" class="btn btn-outline-dark btn-lg mt-3" id="commentbutton">Post</button>
-    </form>
+
+                    <div class="row beerbarrow">
+                        <input type="favbeer" placeholder="Beer:" class="form-control" id="favbeerinput">
+                        <input type="favbar" placeholder="Bar:" class="form-control" id="favbarinput">
+                    </div>
+                    <button type="button" class="btn btn-outline-dark btn-lg mt-3" id="commentbutton">Post</button>
+            </form>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
 </div>
-</div>
+
 {{!-- Comments get posted here --}}
-<div class="postContainer">
-    <h2>Comments</h2>
-</div>
-</div>
 
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+
+        <h2>Comments</h2>
+        {{> postcontainer}}
+    </div>
+    <div class="col-md-3">
+
+    </div>
 </div>
