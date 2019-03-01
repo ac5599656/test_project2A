@@ -14,9 +14,9 @@ To see a live demo, Please click [here](https://limitless-basin-10585.herokuapp.
 
 ## Authors
 
+- [Anne Chen](https://github.com/ac5599656)
 - [Greg Mash](https://github.com/GregMash)
 - [Bonnie Acuna](https://github.com/BonnieAcuna)
-- [Anne Chen](https://github.com/ac5599656)
 
 ## Functionality
 
