@@ -32,6 +32,10 @@ Login Page
 
 ![alt text](/public/assets/images/login.png)
 
+Dashboard
+
+![alt text](/public/assets/images/dashboard.png)
+
 ## Functionality
 
 On the Front End, the app utilizes `jQuery`, `AJAX`, `HTML/CSS`, `Handlebars.js`,and `Moment.js`.
