@@ -5,10 +5,17 @@ body {
   margin: 0;
   padding: 0;
 }
+html {
+  background: url(/assets/images/people/drinking.jpg) no-repeat center center
+    fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 body {
   background-color: rgb(221, 219, 219);
-
 }
 
 .list-group-item {
@@ -42,9 +49,11 @@ h2 {
   position: absolute;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 600px;
+  /* min-height: 100%;
+  min-width: 1024px; */
   width: 100%;
-  z-index: -1;
+  height: auto;
+  /* z-index: -1; */
 }
 
 .card-overlay {
@@ -169,7 +178,6 @@ h3 {
 
 .beer {
   float: right;
-
 }
 
 p {
@@ -188,4 +196,23 @@ label[for="post"] {
 .postBody {
   margin-bottom: 10%;
   margin-top: 10%;
+}
+input#age.validate {
+  margin-left: 50px;
+}
+input#email.validate {
+  margin-left: 36px;
+}
+input#password.validate {
+  margin-left: 6px;
+}
+input#password2.validate {
+  margin-left: 6px;
+}
+.ml-5 {
+  float: right;
+  margin-top: 10px;
+}
+.letter {
+  margin-right: 10px;
 }
