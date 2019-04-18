@@ -24,7 +24,7 @@ Landing Page
 
 ![alt text](/public/assets/images/landing.png)
 
-Register
+Register Page
 
 ![alt text](/public/assets/images/register.png)
 
