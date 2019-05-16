@@ -1,5 +1,5 @@
 //Upon the document finishing to load...
-$(document).ready(function () {
+$(document).ready(function() {
   //================================ Global =======================================
   getInfo();
   // Variable to hold our posts
@@ -14,7 +14,7 @@ $(document).ready(function () {
     if (personId) {
       personId = "/?person_id=" + personId;
     }
-    $.get("/api/posts" + personId, function (data) {
+    $.get("/api/posts" + personId, function(data) {
       posts = data;
       // if (!posts || !posts.length) {
       //   //displayEmpty(person);
@@ -25,10 +25,10 @@ $(document).ready(function () {
       //}
     });
   }
-  $("a:not(.clickedOnce)").click(function () {
+  $("a:not(.clickedOnce)").click(function() {
     $(this)
       .addClass("clickedOnce")
-      .on("click", function () {
+      .on("click", function() {
         $(this).hide();
       });
   });
@@ -38,7 +38,7 @@ $(document).ready(function () {
     $.ajax({
       method: "DELETE",
       url: "/api/posts/" + id
-    }).then(function () {
+    }).then(function() {
       getPosts();
     });
   }
@@ -56,10 +56,14 @@ $(document).ready(function () {
   function createNewRow(post) {
     console.log(post);
     console.log(post.favBar);
-    var beer = $("<h6 class='beer'>")
+    var beer = $("<h6 class='beer'>");
     beer.text("Drinking:" + post.favBeer);
     var replaceFavBar = post.favBar.split(" ").join("+");
-    var bar = $(`<a href=https://www.google.com/maps/search/?api=1&query=${replaceFavBar}>${post.favBar}</a>`);
+    var bar = $(
+      `<a href=https://www.google.com/maps/search/?api=1&query=${replaceFavBar} target = _blank>${
+        post.favBar
+      }</a>`
+    );
     // bar.text("bar:" + post.favBar);
     var formattedDate = new Date(post.createdAt);
     formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm A");
@@ -83,8 +87,6 @@ $(document).ready(function () {
       float: "right",
       color: "orange",
       "margin-top": "40px"
-
-
     });
 
     newPostDate.css({
@@ -96,10 +98,14 @@ $(document).ready(function () {
 
     var newPostCardBody = $("<div>");
     newPostCardBody.addClass("card-body");
-    var newPostBody = $(`<a href=https://www.google.com/maps/search/?api=1&query=${replaceFavBar}>${post.favBar}</a>`);
-    var newBeer = $("<h6 class='beer'>")
+    var newPostBody = $(
+      `<a href=https://www.google.com/maps/search/?api=1&query=${replaceFavBar}>${
+        post.favBar
+      }</a>`
+    );
+    var newBeer = $("<h6 class='beer'>");
     //newPostTitle.text("");
-    var newPost = $("<p class = 'postBody'>")
+    var newPost = $("<p class = 'postBody'>");
     newPost.text(post.body);
     newPostBody.text(post.body);
     newBeer.text(post.body);
@@ -143,21 +149,19 @@ $(document).ready(function () {
     //let age = $("#ageDisplay");
     //age.text(`${age}`)
 
-
     $.ajax({
       method: "GET",
       url: "/api/location"
-    }).then(function (data) {
+    }).then(function(data) {
       let location = $("#locationDisplay");
 
       location.text(`${data.city}, ${data.region_code}`);
       // age.text(user.age);
-
     });
     $.ajax({
       method: "GET",
       url: "/api/people"
-    }).then(function (data) {
+    }).then(function(data) {
       console.log(data);
       console.log(data.firstname);
       console.log(data.lastname);
@@ -174,12 +178,11 @@ $(document).ready(function () {
       lastName.text(`${data.lastname}`);
       //     }
     });
-
   }
 
   //================================ Main Process =======================================
   //when the post form is filled out and submitted execute a new post
-  $("#commentbutton").on("click", function (event) {
+  $("#commentbutton").on("click", function(event) {
     event.preventDefault();
     // create new post body with form content
     const newPost = {
@@ -203,14 +206,11 @@ $(document).ready(function () {
 
     $.ajax({
       method: "GET",
-      url: `/api/beer/${newPost.favBeer}`,
-    }).then(function (data) {
-
-
-    });
+      url: `/api/beer/${newPost.favBeer}`
+    }).then(function(data) {});
     // favBar.push(replacefavBar);
     // post the content to posts and take the user to the main page
-    $.post("/api/posts", newPost, function () {
+    $.post("/api/posts", newPost, function() {
       location.reload();
     });
   });
