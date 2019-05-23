@@ -14,6 +14,7 @@ $(document).ready(function() {
     if (personId) {
       personId = "/?person_id=" + personId;
     }
+    console.log(personId);
     $.get("/api/posts" + personId, function(data) {
       posts = data;
       // if (!posts || !posts.length) {
@@ -54,8 +55,8 @@ $(document).ready(function() {
   }
 
   function createNewRow(post) {
-    console.log(post);
-    console.log(post.favBar);
+    // console.log(post);
+    // console.log(post.favBar);
     var beer = $("<h6 class='beer'>");
     beer.text("Drinking:" + post.favBeer);
     var replaceFavBar = post.favBar.split(" ").join("+");
@@ -64,9 +65,32 @@ $(document).ready(function() {
         post.favBar
       }</a>`
     );
-    // bar.text("bar:" + post.favBar);
+    bar.text("bar:" + post.favBar);
     var formattedDate = new Date(post.createdAt);
     formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm A");
+
+    // let Post = `
+    //           <div class="card">
+    //             <div class="card-header">
+    //               <button class="delete btn mr-3">X</button>
+    //               <a href="https://www.google.com/maps/search/?api=1&amp;query=${replaceFavBar}" target="_blank">${
+    //   post.favBar
+    // }</a>
+    //               <h6 class="beer">${post.favBeer}</h6>
+    //               <h2><small>${formattedDate}</small></h2>
+    //               <h5 style="float: right; color: blue; margin-top: -10px;">Written by:${
+    //                 post.User.firstname
+    //               } ${post.User.lastname}
+    //             </h5>
+    //           </div>
+    //           <div class="card-body">
+    //             <button class="addComment btn btn-info">Comment</button>
+    //             <p>${post.body}</p>
+    //           </div>
+    //      </div>`;
+
+    // return Post;
+
     var newPostCard = $("<div>");
     newPostCard.addClass("card");
     var newPostCardHeading = $("<div>");
@@ -74,9 +98,9 @@ $(document).ready(function() {
     var deleteBtn = $("<button>");
     deleteBtn.text("X");
     deleteBtn.addClass("delete btn mr-3");
-    //var editBtn = $("<button>");
-    //editBtn.text("Edit");
-    //editBtn.addClass("edit btn btn-info");
+    var editBtn = $("<button>");
+    editBtn.text("Edit");
+    editBtn.addClass("edit btn btn-info");
     var newPostTitle = $("<h2>");
     var newPostDate = $("<h5>");
     var newPostAuthor = $("<h5>");
@@ -104,7 +128,7 @@ $(document).ready(function() {
       }</a>`
     );
     var newBeer = $("<h6 class='beer'>");
-    //newPostTitle.text("");
+    newPostTitle.text("");
     var newPost = $("<p class = 'postBody'>");
     newPost.text(post.body);
     newPostBody.text(post.body);
@@ -122,17 +146,20 @@ $(document).ready(function() {
     newPostCard.append(newPostCardHeading);
     newPostCard.append(newPostCardBody);
     newPostCard.data("post", post);
-
+    console.log(newPostCard);
     return newPostCard;
   }
 
   //This function figures out which post we want to delete and then calls deletePost
-  function handlePostDelete() {
+  function handlePostDelete(post) {
     var currentPost = $(this)
       .parent()
       .parent()
       .data("post");
+    console.log(currentPost);
     deletePost(currentPost.id);
+
+    console.log(currentPost.id);
   }
 
   // This function figures out which post we want to edit and takes it to the appropriate url
@@ -226,6 +253,7 @@ $(document).ready(function() {
   // Looks for a query param in the url for author_id
   var url = window.location.search;
   var personId;
+  console.log(personId);
   if (url.indexOf("?person_id=") !== -1) {
     personId = url.split("=")[1];
     getPosts(personId);

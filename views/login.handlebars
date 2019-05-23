@@ -12,34 +12,35 @@
 
         <div class="card-overlay">
 
-            <div class="container" id="mainlogin">
-                <form name="myForm" action="/auth/login" onsubmit="return validateForm()" method="post">
 
-                    <h3>Log In </h3>
+            <form class="login" name="myForm" action="/auth/login" onsubmit="return validateForm()" method="post">
 
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <label for="email">Email:</label>
-                            <input id="letter" type="email" class="validate" name="email" required>
+                <h3>Log In </h3>
 
-                        </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <label for="email">Email:</label>
+                        <input id="letter" type="email" class="validate" name="email" required>
+
                     </div>
+                </div>
 
 
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <label for="password">Password:</label>
-                            <input id="secret" type="password" class="validate" name="password" required>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <label for="password">Password:</label>
+                        <input id="secret" type="password" class="validate" name="password" required>
 
-                        </div>
                     </div>
-                    <div class="row">
+                </div>
+                <div class="row">
 
 
-                        <button class="btn submit" type="submit" value="Log in">Log in </button>
-                    </div>
-            </div>
+                    <button class="btn submit" type="submit" value="Log in">Log in </button>
+                </div>
             </form>
+
+
         </div>
     </div>
 
