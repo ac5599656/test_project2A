@@ -181,6 +181,23 @@ h3 {
   width: 35%;
   font-size: 32px;
 }
+span#firstNameDisplay {
+  color: white;
+}
+span#locationDisplay {
+  color: white;
+}
+
+span#lastNameDisplay {
+  color: white;
+}
+span.lastNameDisplay {
+  color: white;
+}
+button#commentbutton.btn.btn-outline-dark.btn.mt-3 {
+  color: white;
+  border: 1px solid white;
+}
 
 .logoutbutton {
   float: right;
