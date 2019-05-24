@@ -70,7 +70,7 @@ $(document).ready(function() {
     formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm A");
 
     let Post = `
-              <div class="card">
+              <div data-id = "${post.id}" class="card">
                 <div class="card-header">
                   <button class="delete btn mr-3">X</button>
                   <a href="https://www.google.com/maps/search/?api=1&amp;query=${replaceFavBar}" target="_blank">${
@@ -90,7 +90,7 @@ $(document).ready(function() {
      </div>`;
     // var newPostCard = $("<div>");
     // newPostCard.addClass("card");
-    postContainer.data("post", post);
+    // postContainer.data("post", post);
     return Post;
 
     // var newPostCard = $("<div>");
@@ -156,13 +156,14 @@ $(document).ready(function() {
   //This function figures out which post we want to delete and then calls deletePost
   function handlePostDelete() {
     var currentPost = $(this)
-      .parent()
-      .parent()
-      .parent()
-      .data("post");
-    deletePost(currentPost.id);
+      .closest(".card")
+      // .parent()
+      // .parent()
+      // .parent()
+      .attr("data-id");
+    deletePost(currentPost);
 
-    console.log(currentPost.id);
+    console.log(currentPost);
   }
 
   // This function figures out which post we want to edit and takes it to the appropriate url
