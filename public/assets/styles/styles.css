@@ -38,6 +38,7 @@ body {
 
 h2 {
   text-align: center;
+  color: white;
 }
 
 .header {
@@ -82,7 +83,12 @@ h2 {
 .create-comment-textarea {
   text-align: center;
 }
-
+#blog {
+  color: white;
+}
+#date {
+  color: blue;
+}
 #post {
   width: 50%;
   margin-left: auto;

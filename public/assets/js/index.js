@@ -69,94 +69,97 @@ $(document).ready(function() {
     var formattedDate = new Date(post.createdAt);
     formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm A");
 
-    // let Post = `
-    //           <div class="card">
-    //             <div class="card-header">
-    //               <button class="delete btn mr-3">X</button>
-    //               <a href="https://www.google.com/maps/search/?api=1&amp;query=${replaceFavBar}" target="_blank">${
-    //   post.favBar
-    // }</a>
-    //               <h6 class="beer">${post.favBeer}</h6>
-    //               <h2><small>${formattedDate}</small></h2>
-    //               <h5 style="float: right; color: blue; margin-top: -10px;">Written by:${
-    //                 post.User.firstname
-    //               } ${post.User.lastname}
-    //             </h5>
-    //           </div>
-    //           <div class="card-body">
-    //             <button class="addComment btn btn-info">Comment</button>
-    //             <p>${post.body}</p>
-    //           </div>
-    //      </div>`;
+    let Post = `
+              <div class="card">
+                <div class="card-header">
+                  <button class="delete btn mr-3">X</button>
+                  <a href="https://www.google.com/maps/search/?api=1&amp;query=${replaceFavBar}" target="_blank">${
+      post.favBar
+    }</a>
+              <h6 class="beer">${post.favBeer}</h6>
+              <h2><small id="date">${formattedDate}</small></h2>
+              <h5 style="float: right; color: blue; margin-top: -10px;">Written by:${
+                post.User.firstname
+              } ${post.User.lastname}
+            </h5>
+          </div>
+          <div class="card-body">
+            <button class="addComment btn btn-info">Comment</button>
+            <p>${post.body}</p>
+          </div>
+     </div>`;
+    // var newPostCard = $("<div>");
+    // newPostCard.addClass("card");
+    postContainer.data("post", post);
+    return Post;
 
-    // return Post;
+    // var newPostCard = $("<div>");
+    // newPostCard.addClass("card");
+    // var newPostCardHeading = $("<div>");
+    // newPostCardHeading.addClass("card-header");
+    // var deleteBtn = $("<button>");
+    // deleteBtn.text("X");
+    // deleteBtn.addClass("delete btn mr-3");
+    // var editBtn = $("<button>");
+    // editBtn.text("Edit");
+    // editBtn.addClass("edit btn btn-info");
+    // var newPostTitle = $("<h2>");
+    // var newPostDate = $("<h5>");
+    // var newPostAuthor = $("<h5>");
+    // newPostAuthor.text(
+    //   "Written by: " + post.User.firstname + " " + post.User.lastname
+    // );
+    // newPostAuthor.css({
+    //   float: "right",
+    //   color: "orange",
+    //   "margin-top": "40px"
+    // });
 
-    var newPostCard = $("<div>");
-    newPostCard.addClass("card");
-    var newPostCardHeading = $("<div>");
-    newPostCardHeading.addClass("card-header");
-    var deleteBtn = $("<button>");
-    deleteBtn.text("X");
-    deleteBtn.addClass("delete btn mr-3");
-    var editBtn = $("<button>");
-    editBtn.text("Edit");
-    editBtn.addClass("edit btn btn-info");
-    var newPostTitle = $("<h2>");
-    var newPostDate = $("<h5>");
-    var newPostAuthor = $("<h5>");
-    newPostAuthor.text(
-      "Written by: " + post.User.firstname + " " + post.User.lastname
-    );
-    newPostAuthor.css({
-      float: "right",
-      color: "orange",
-      "margin-top": "40px"
-    });
+    // newPostDate.css({
+    //   float: "left",
+    //   color: "black",
+    //   "margin-top": "50px",
+    //   "font-size": "10px"
+    // });
 
-    newPostDate.css({
-      float: "left",
-      color: "black",
-      "margin-top": "50px",
-      "font-size": "10px"
-    });
+    // var newPostCardBody = $("<div>");
+    // newPostCardBody.addClass("card-body");
+    // var newPostBody = $(
+    //   `<a href=https://www.google.com/maps/search/?api=1&query=${replaceFavBar}>${
+    //     post.favBar
+    //   }</a>`
+    // );
+    // var newBeer = $("<h6 class='beer'>");
+    // newPostTitle.text("");
+    // var newPost = $("<p class = 'postBody'>");
+    // newPost.text(post.body);
+    // newPostBody.text(post.body);
+    // newBeer.text(post.body);
+    // newPostTitle.append(newPostDate);
+    // if (post.UserId === post.currentUser) {
+    //   newPostCardHeading.append(deleteBtn);
+    // }
+    // newPostCardHeading.append(bar);
+    // newPostCardHeading.append(beer);
+    // newPostCardHeading.append(newPostTitle);
+    // newPostCardHeading.append(newPostAuthor);
+    // newPostDate.text(formattedDate);
+    // newPostCardBody.append(newPost);
+    // newPostCard.append(newPostCardHeading);
+    // newPostCard.append(newPostCardBody);
+    // console.log(newPostCard.data("post", post));
+    // console.log(newPostCard);
 
-    var newPostCardBody = $("<div>");
-    newPostCardBody.addClass("card-body");
-    var newPostBody = $(
-      `<a href=https://www.google.com/maps/search/?api=1&query=${replaceFavBar}>${
-        post.favBar
-      }</a>`
-    );
-    var newBeer = $("<h6 class='beer'>");
-    newPostTitle.text("");
-    var newPost = $("<p class = 'postBody'>");
-    newPost.text(post.body);
-    newPostBody.text(post.body);
-    newBeer.text(post.body);
-    newPostTitle.append(newPostDate);
-    if (post.UserId === post.currentUser) {
-      newPostCardHeading.append(deleteBtn);
-    }
-    newPostCardHeading.append(bar);
-    newPostCardHeading.append(beer);
-    newPostCardHeading.append(newPostTitle);
-    newPostCardHeading.append(newPostAuthor);
-    newPostDate.text(formattedDate);
-    newPostCardBody.append(newPost);
-    newPostCard.append(newPostCardHeading);
-    newPostCard.append(newPostCardBody);
-    newPostCard.data("post", post);
-    console.log(newPostCard);
-    return newPostCard;
+    // return newPostCard;
   }
 
   //This function figures out which post we want to delete and then calls deletePost
-  function handlePostDelete(post) {
+  function handlePostDelete() {
     var currentPost = $(this)
       .parent()
       .parent()
+      .parent()
       .data("post");
-    console.log(currentPost);
     deletePost(currentPost.id);
 
     console.log(currentPost.id);
