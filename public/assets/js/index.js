@@ -11,8 +11,10 @@ $(document).ready(function() {
   // This function grabs posts from the database and updates the view
   function getPosts(person) {
     personId = person || "";
+
     if (personId) {
       personId = "/?person_id=" + personId;
+      console.log(personId);
     }
     console.log(personId);
     $.get("/api/posts" + personId, function(data) {
@@ -53,7 +55,13 @@ $(document).ready(function() {
     }
     postContainer.prepend(postsToAdd);
   }
-
+  // function renderComment(id, firstname, lastname, comment, create) {
+  //   return `<div class="comment-card" data-comment-id="${id}">
+  //           <div class="comment-author">${firstname} ${lastname}</div>
+  //           <p>${comment}</p>
+  //           <p><i>Posted on ${create}</i></p>
+  //         </div> `;
+  // }
   function createNewRow(post) {
     // console.log(post);
     // console.log(post.favBar);
@@ -69,10 +77,10 @@ $(document).ready(function() {
     var formattedDate = new Date(post.createdAt);
     formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm A");
 
-    let Post = `
+    let currentPost = `
               <div data-id = "${post.id}" class="card">
                 <div class="card-header">
-                  <button class="delete btn mr-3">X</button>
+                 <button class = "delete btn mr-3">X</button>
                   <a href="https://www.google.com/maps/search/?api=1&amp;query=${replaceFavBar}" target="_blank">${
       post.favBar
     }</a>
@@ -84,86 +92,25 @@ $(document).ready(function() {
             </h5>
           </div>
           <div class="card-body">
-            <button class="addComment btn btn-info">Comment</button>
             <p>${post.body}</p>
           </div>
      </div>`;
-    // var newPostCard = $("<div>");
-    // newPostCard.addClass("card");
-    // postContainer.data("post", post);
-    return Post;
-
-    // var newPostCard = $("<div>");
-    // newPostCard.addClass("card");
-    // var newPostCardHeading = $("<div>");
-    // newPostCardHeading.addClass("card-header");
-    // var deleteBtn = $("<button>");
-    // deleteBtn.text("X");
-    // deleteBtn.addClass("delete btn mr-3");
-    // var editBtn = $("<button>");
-    // editBtn.text("Edit");
-    // editBtn.addClass("edit btn btn-info");
-    // var newPostTitle = $("<h2>");
-    // var newPostDate = $("<h5>");
-    // var newPostAuthor = $("<h5>");
-    // newPostAuthor.text(
-    //   "Written by: " + post.User.firstname + " " + post.User.lastname
-    // );
-    // newPostAuthor.css({
-    //   float: "right",
-    //   color: "orange",
-    //   "margin-top": "40px"
-    // });
-
-    // newPostDate.css({
-    //   float: "left",
-    //   color: "black",
-    //   "margin-top": "50px",
-    //   "font-size": "10px"
-    // });
-
-    // var newPostCardBody = $("<div>");
-    // newPostCardBody.addClass("card-body");
-    // var newPostBody = $(
-    //   `<a href=https://www.google.com/maps/search/?api=1&query=${replaceFavBar}>${
-    //     post.favBar
-    //   }</a>`
-    // );
-    // var newBeer = $("<h6 class='beer'>");
-    // newPostTitle.text("");
-    // var newPost = $("<p class = 'postBody'>");
-    // newPost.text(post.body);
-    // newPostBody.text(post.body);
-    // newBeer.text(post.body);
-    // newPostTitle.append(newPostDate);
-    // if (post.UserId === post.currentUser) {
-    //   newPostCardHeading.append(deleteBtn);
-    // }
-    // newPostCardHeading.append(bar);
-    // newPostCardHeading.append(beer);
-    // newPostCardHeading.append(newPostTitle);
-    // newPostCardHeading.append(newPostAuthor);
-    // newPostDate.text(formattedDate);
-    // newPostCardBody.append(newPost);
-    // newPostCard.append(newPostCardHeading);
-    // newPostCard.append(newPostCardBody);
-    // console.log(newPostCard.data("post", post));
-    // console.log(newPostCard);
-
-    // return newPostCard;
+    // renderComment(id, firstname, lastname, comment, create);
+    return currentPost;
   }
-
+  // function renderComment() {
+  //   return `<div class="comment-card" data-comment-id="${id}">
+  //   <div class="comment-author">${firstname} ${lastname}</div>
+  //   <p>${comment}</p>
+  //   <p><i>Posted on ${create}</i></p>
+  // </div>`;
+  // }
   //This function figures out which post we want to delete and then calls deletePost
   function handlePostDelete() {
     var currentPost = $(this)
       .closest(".card")
-      // .parent()
-      // .parent()
-      // .parent()
       .attr("data-id");
     deletePost(currentPost);
-
-    console.log(currentPost);
   }
 
   // This function figures out which post we want to edit and takes it to the appropriate url
@@ -257,9 +204,10 @@ $(document).ready(function() {
   // Looks for a query param in the url for author_id
   var url = window.location.search;
   var personId;
-  console.log(personId);
+
   if (url.indexOf("?person_id=") !== -1) {
     personId = url.split("=")[1];
+    console.log(personId);
     getPosts(personId);
   }
   // If there's no authorId we just get all posts as usual

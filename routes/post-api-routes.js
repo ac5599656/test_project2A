@@ -8,11 +8,9 @@ module.exports = app => {
     };
 
     db.Post.findAll({
-      where: query,
-      include: db.User
+      include: [db.User]
     }).then(dbPost => {
       for (var i = 0; i < dbPost.length; i++) {
-        console.log(dbPost[i]);
         dbPost[i].dataValues.currentUser = req.user.id;
       }
       // console.log(dbPost);
@@ -47,19 +45,25 @@ module.exports = app => {
   });
 
   app.delete("/api/posts/:id", ensureAuthenticated, (req, res) => {
-    console.log(req);
-    if (ensureAuthenticated) {
-      db.Post.destroy({
-        where: {
-          id: req.params.id
-        }
-      }).then(dbPost => {
+    // console.log(req);
+    db.Post.destroy({
+      where: {
+        // TODO: double check author and user _id keys
+        UserId: req.user.id,
+        id: req.params.id
+      }
+    })
+      .then(dbPost => {
         res.json(dbPost);
+      })
+      .catch(err => {
+        console.error(err);
+        // either the destroy failed because of an invalid id
+        // or it failed because the logged in user was not the author
       });
-    }
   });
 
-  app.put("/api/posts", (req, res) => {
+  app.put("/api/posts", ensureAuthenticated, (req, res) => {
     db.Post.update(req.body, {
       where: {
         id: req.body.id
